@@ -19,20 +19,66 @@ DOM2和DOM3
                          返回最近的父元素，没有定位属性就返回 body
 
 
-          1. offsetParent定义：
+       1. offsetParent定义：
             那么offsetParent就是距离该子元素最近的进行过定位的父元素（position：absolute  relative fixed)
             如果其父元素中不存在定位则offsetParent为：body元素
 
-          2. 根据定义分别存在以下几种情况
+       2. 根据定义分别存在以下几种情况
+         没有已定位的父节点，且自身position: relative的DIV元素的offsetParent为BODY
+         
+         没有已定位的父节点，且自身position: absolute的DIV元素的offsetParent为BODY
+         
+         没有已定位的父节点，且自身position: fixed的DIV元素的offsetParent为BODY
+         
+         没有已定位的父节点，且自身position: static的DIV元素的offsetParent为BODY
+         
+         拥有一个已定位的父节点，且自身position: relative的DIV元素的offsetParent为其最近被定位的祖先
+         
+         拥有一个已定位的父节点，且自身position: absolute的DIV元素的offsetParent为其最近被定位的祖先
+         
+         拥有一个已定位的父节点，且自身position: fixed的DIV元素的offsetParent为BODY
+         
+         拥有一个已定位的父节点，且自身position: static的DIV元素的offsetParent为其最近被定位的祖先
+         
+         在table之内，td与table都没有定位，且自身position: relative的DIV元素的offsetParent为BODY
+         
+         在table之内，td与table都没有定位，且自身position: absolute的DIV元素的offsetParent为BODY
+         
+         在table之内，td与table都没有定位，且自身position: fixed的DIV元素的offsetParent为BODY
+         
+         在table之内，td与table都没有定位，
+         且自身position: static的DIV元素的offsetParent为其最近的TD、TH元素
+         
+         在table之内，td相对定位，且自身position: relative的DIV元素的offsetParent为其最近的TD、TH元素
+         
+         在table之内，td相对定位，且自身position: absolute的DIV元素的offsetParent为BODY
+         
+         在table之内，td相对定位，且自身position: fixed的DIV元素的offsetParent为BODY
+         
+         在table之内，td相对定位，且自身position: static的DIV元素的offsetParent为其最近的TD、TH元素
+         
+         在table之内，table相对定位，且自身position: relative的DIV元素的offsetParent为其最近的TABLE元素
+         
+         在table之内，table相对定位，且自身position: absolute的DIV元素的offsetParent为其最近的TABLE元素
+         
+         在table之内，table相对定位，且自身position: fixed的DIV元素的offsetParent为BODY
+         
+         在table之内，table相对定位，且自身position: static的DIV元素的offsetParent为其最近的TD、TH元素
 
-          【1】元素自身有fixed定位，父元素不存在定位，
-              则offsetParent的结果为null（firefox中为：body，其他浏览器返回为null）
 
-          【2】元素自身无fixed定位，且父元素也不存在定位，offsetParent为<body>元素
+     我们可以总结以下几条规律：
 
-          【3】元素自身无fixed定位，且父元素存在定位，offsetParent为离自身最近且经过定位的父元素
+         a) position为fixed元素是没有offsetParent，但firefox统一返回body。
+         b) position为absolute, relative的元素的offsetParent总是为其最近的已定位的元素,
+            没有找最近的td,th元素，再没有找body。
+         c) position为static的元素的offsetParent则是先找最近的td,th元素，再没有找body。
+         d) body为最顶层的offsetParent。
 
-          【4】<body>元素的offsetParent是null
+
+
+
+
+
 
 
 
