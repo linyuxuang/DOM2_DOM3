@@ -76,8 +76,9 @@ DOM2和DOM3
 
 
 
-
-
+    clientWidth 元素的内容及其内边距所占的空间大小(边框不算在其内)
+   
+    clientHeight 一样
 
 
 
