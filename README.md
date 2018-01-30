@@ -75,13 +75,16 @@ DOM2和DOM3
          d) body为最顶层的offsetParent。
 
 
+客户区大小
 
-    clientWidth 元素的内容及其内边距所占的空间大小(边框不算在其内)
-   
-    clientHeight 一样
+      clientWidth 元素的内容及其内边距所占的空间大小(边框不算在其内)
+    
+      clientHeight 一样
 
 
+滚动大小
 
+        scrollHeight:获取给定对象的滚动高度。
 
 
 
