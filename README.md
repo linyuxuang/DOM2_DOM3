@@ -280,6 +280,61 @@ getBoundingClientRect()
 
 
 
+  使用TreeWalker遍历DOM树
 
+          使用TreeWalker遍历DOM树,即使不定义过滤器,也可以取到所有 li元素,
 
+           例子 如下
 
+                  <html>
+                  <head>
+                  <title></title>
+                    <meta charset="UTF-8">
+                  <script>
+
+                  window.onload=function(){
+                             var divnode = document.getElementById("div1");
+               var iterator=document.createTreeWalker(divnode,NodeFilter.SHOW_ELEMENT,null,false);
+
+                        iterator.firstChild(); //转到<p>
+                        iterator.nextSibling(); //转到<uL> 
+                        var node=iterator.firstChild();  //转到第一个<Li>
+
+                       while(node!=null){
+                           alert(node.tagName);
+                           node=iterator.nextSibling();
+                       }
+
+                  }
+                  </script>
+                  </head>
+                  <body>
+                  <div id="div1">
+                     <p>你好<b>读者!</b></p>
+                     <ul>
+                        <li>列表项一</li>
+                        <li>列表项二</li>
+                        <li>列表项三</li>
+                        <li>列表项四</li>
+                     </ul>
+                  </div>
+
+                  </body>
+                  </html>
+                  
+                  
+         因为我们知道<li>元素在文档结构中的位置，所以可以直接定位到哪里，
+	即使使用 firstChild()转到<p>元素，使用nextSibling()转到<ul>元素，
+	然后在使用	firstChild()转到第一个<LI>元素。
+		
+	注意此处： 	TreeWalker只返回元素(由传入到createTreeWalker() 的第二个参数决定)。
+	因此，可以放心使用nextSibling()访问每一个li元素，直至这个方法最后返回 null
+    
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
