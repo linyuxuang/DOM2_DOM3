@@ -286,6 +286,17 @@ getBoundingClientRect()
 
 
   使用TreeWalker遍历DOM树
+  
+        parentNode()  遍历到当前节点的父节点
+	firstChild()    遍历到当前节点第一个子节点
+	lastChild()     遍历到当前节点最后一个节点
+	nextSibling()  遍历到当前节点下一个同辈节点
+	previousSibling()  遍历到当前节点的上一个同辈节点
+        
+	
+         currentNode:   TreeWalker类型还有一个属性，名叫 currentNode,
+                        表示任何遍历方法在上一次遍历中的节点，
+		        通过设置这个属性也可以修改遍历继续进行的起点，
 
           使用TreeWalker遍历DOM树,即使不定义过滤器,也可以取到所有 li元素,
 
@@ -329,8 +340,8 @@ getBoundingClientRect()
                   
                   
          因为我们知道<li>元素在文档结构中的位置，所以可以直接定位到哪里，
-	即使使用 firstChild()转到<p>元素，使用nextSibling()转到<ul>元素，
-	然后在使用	firstChild()转到第一个<LI>元素。
+	即使使用firstChild()转到<p>元素，使用nextSibling()转到<ul>元素，
+	然后在使用firstChild()转到第一个<LI>元素。
 		
 	注意此处： 	TreeWalker只返回元素(由传入到createTreeWalker() 的第二个参数决定)。
 	因此，可以放心使用nextSibling()访问每一个li元素，直至这个方法最后返回 null
