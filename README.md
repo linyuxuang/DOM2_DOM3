@@ -103,9 +103,11 @@ getBoundingClientRect()
     
  遍历DOM(NodeIterator和TreeWalker的使用)
               
-		如果应给访问给定的节点：给方法返回  NodeFilter.FILTER_ACCEPT
-		如果不应给访问给定的节点：返回  NodeFilter.FILTER_SKIP
-		
+
+		如果应该访问给定的节点，那么该方法返回NodeFilter.FILTER_ACCEPT;
+		如果不应该访问该节点并且其子节点也没兴趣，则返回NodeFilter.FILTER_REJECT;
+		如果不应该访问该节点但仍对其子节点有兴趣，则返回NodeFilter.FILTER_SKIP。
+
       
       可以用document对象的createNodeIterator()方法来创建NodeIterator对象，基本形式如下：
      var iterator = document.createNodeIterator(root,whatToShow,filter,entityReferenceExpansion);
