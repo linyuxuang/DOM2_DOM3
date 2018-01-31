@@ -87,6 +87,9 @@ DOM2和DOM3
         scrollHeight:获取给定对象的滚动高度。
 
 
+  getBoundingClientRect() getBoundingClientRect用于获取某个元素相对于视窗的位置集合。
+                           集合中有top, right, bottom, left等属性。
 
-
-
+    https://www.cnblogs.com/Songyc/p/4458570.html
+    
+    
